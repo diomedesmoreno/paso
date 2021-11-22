@@ -1,0 +1,57 @@
+<div class="wrapper_custom">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow-lg border-0 rounded-lg mt-5">
+              <div class="card-header card-header-danger">
+                  <h4 class="text-center font-weight-light">Login</h4>
+              </div>
+              <div class="card-body" >
+                  <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                      <div class="col-md-12">
+                          <mat-form-field class="example-full-width">
+                            <mat-label>{{ 'enter' | translate }}  {{ 'your' | translate }}  {{ 'email' | translate }}</mat-label>
+                            <input matInput formControlName="email" placeholder="{{ 'enter' | translate }}  {{ 'your' | translate }}  {{ 'email' | translate }}" type="email" >
+                            <mat-error *ngIf="form.controls.email.hasError('required')">
+                              {{ 'email' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-12">
+                            <mat-form-field class="example-full-width">
+                              <mat-label>{{ 'enter' | translate }}  {{ 'your' | translate }}  {{ 'password' | translate }} </mat-label>
+                              <input matInput formControlName="password" [type]="hide ? 'text' : 'password'" placeholder="{{ 'enter' | translate }}  {{ 'your' | translate }}  {{ 'password' | translate }}">
+                              <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                              </button>
+                              <mat-error *ngIf="form.controls.email.hasError('required')">
+                                {{ 'name' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+                              </mat-error>
+                            </mat-form-field>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-10 offset-2">
+                        <button mat-raised-button type="submit" class="btn btn-primary pull-right" [disabled]="this.form.invalid">{{ 'sign_in' | translate }}</button>
+                      </div>
+                    </div>
+                    <small class=float-right>
+                      <a routerLink="/signup"  class="">{{ 'sign_up' | translate }}</a>
+                      <br>
+                      <a routerLink="/reset-password">{{ 'reset_password' | translate }}</a>
+                    </small>
+                    <!-- <small class=float-right> -->
+                      <!-- <a routerLink="/signup" class="">Sign Up</a> -->
+                    <!-- </small> -->
+                  </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<app-footer></app-footer>
+
+

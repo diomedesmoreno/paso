@@ -1,0 +1,55 @@
+<!-- <mat-toolbar> -->
+    <div class="button-row">
+        <span class="title" >{{ flightService.form.controls['id'].value? "Editar" : "Crear" }}</span>
+        <button class="btn-dialog-close float-right" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+      </div>
+    <!-- </mat-toolbar> -->
+    <div class="mdc-form-field">
+      <form [formGroup]="flightService.form" class="normal-form" (submit)="onSubmit()">
+          <div class="controles-container">
+            <input type="hidden" formControlName="id">
+            <!--  -->
+              
+            <mat-form-field appearance="fill">
+                <mat-label>Pais de origen</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let pais of paisOrigen" [value]="pais.value" formControlName="countryFrom">
+                    {{pais.name}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                <mat-label>Pais de destino</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let pais of paisDestino" [value]="pais.value" formControlName="countryTo">
+                    {{pais.name}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="form__input">
+                <mat-label>Hora de salida</mat-label>
+                <input matInput placeholder="Hora de salida" type="email" formControlName="horaSalida">
+                </mat-form-field>
+            
+                <mat-form-field class="form__input">
+                <mat-label>Hora de llegada</mat-label>
+                <input matInput placeholder="Contraseña" type="password" formControlName="horaLlegada">
+                </mat-form-field>
+
+                <mat-form-field class="form__input">
+                <mat-label>Hora de llegada</mat-label>
+                <input matInput placeholder="0" type="number" formControlName="hora">
+                <input matInput placeholder="0" type="number" formControlName="minuto">
+                </mat-form-field>
+            
+              <!--  -->
+            <div class="button-row">
+              <button class="float-left" mat-raised-button color="primary" type="submit" >{{ 'save' | translate }}</button>
+              <button class="float-right" mat-raised-button color="warn" (click)="onClose()">{{ 'close' | translate }}</button>
+            </div>
+          </div>
+      </form>
+    </div>
+      

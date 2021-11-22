@@ -1,0 +1,81 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Vuelos</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                          <mat-form-field appearance="standard">
+                              <mat-label>{{ 'filter' | translate }}</mat-label>
+                              <input matInput (keyup)="applyFilter($event)" placeholder="{{ 'enter' | translate }} {{ 'any' | translate }} {{ 'name' | translate }}" #input>
+                          </mat-form-field>
+                            
+                          <button mat-button color="primary" (click)="onCreate()">
+                            <i class="material-icons">add_circle_outline</i> {{ 'add' | translate }}
+                            <!-- <span class="material-icons-outlined">
+                              
+                              </span> -->
+                          </button>
+                          <table mat-table [dataSource]="dataSource" matSort>
+                        
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="id">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+                              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                            </ng-container>
+                        
+                            <!-- countryFrom Column -->
+                            <ng-container matColumnDef="countryFrom">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> Pais de origen </th>
+                              <td mat-cell *matCellDef="let element"> {{element.countryFrom}} </td>
+                            </ng-container>
+                        
+                            <!-- countryTo Column -->
+                            <ng-container matColumnDef="countryTo">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> Pais de destino </th>
+                              <td mat-cell *matCellDef="let element"> {{element.countryTo}} </td>
+                            </ng-container>
+                        
+                            <!-- timeDeparture Column -->
+                            <ng-container matColumnDef="timeDeparture">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> Duración del vuelo </th>
+                              <td mat-cell *matCellDef="let element"> {{element.timeDeparture}} </td>
+                            </ng-container>
+
+                            <!-- Options Column -->
+                            <ng-container matColumnDef="options">
+                              <th mat-header-cell *matHeaderCellDef > {{ 'options' | translate }} </th>
+                              <td mat-cell *matCellDef="let element"> 
+                                <a href="javascript:void(0)" (click)="editFlight(element)">
+                                  <i class="far fa-edit"></i>
+
+                                </a>
+                              </td>
+                            </ng-container>
+                        
+                            <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+
+                            <ng-container matColumnDef="loading">
+                              <mat-footer-cell *matFooterCellDef colspan="12">
+                                Loading data...
+                              </mat-footer-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="noData">
+                              <mat-footer-cell *matFooterCellDef colspan="12">
+                                No data.
+                              </mat-footer-cell>
+                            </ng-container>
+                          </table>
+                          <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

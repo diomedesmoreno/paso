@@ -1,0 +1,26 @@
+Sistema de Administración de Practica de Manejo 
+
+link de la documentacion:
+https://drive.google.com/drive/folders/1Wt8_sugz392ivlYkMXTQODfJ0sufZ9nN?usp=sharing
+
+Paquetes A Instalar
+Select2: https://select2.org/getting-started/installation
+
+Librerias A Instalar
+
+FontAwesome: https://fontawesome.com/v5.15/icons?d=gallery&p=2
+
+Cursos:
+
+Hacer la documentacion de la pagina (Pendiente)
+
+Ideas a integrar :
+
+Pasarela de pago
+https://www.youtube.com/watch?v=NShQvNDuUwU&list=PLZ2ovOgdI-kUKjbS00taEPjTzMrL6jX7w&index=5
+
+Sistema multi-idioma
+
+dependencia a quitar al menos que se utilicen
+google-maps
+google/maps

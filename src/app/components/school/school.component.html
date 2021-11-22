@@ -1,0 +1,60 @@
+<!-- <mat-toolbar> -->
+  <div class="button-row">
+      <span class="title" >{{ schoolService.form.controls['id'].value? "Editar" : "Crear" }}</span>
+      <button class="btn-dialog-close float-right" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+    </div>
+  <!-- </mat-toolbar> -->
+  <div class="mdc-form-field">
+    <form [formGroup]="schoolService.form" class="normal-form" (submit)="onSubmit()">
+        <div class="controles-container">
+          <input type="hidden" formControlName="id">
+          <!--  -->
+            <mat-form-field>
+              <input formControlName="name" matInput placeholder="{{ 'name' | translate }}">
+              <mat-error *ngIf="schoolService.form.controls.name.hasError('required')">
+                {{ 'name' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+              </mat-error>
+            </mat-form-field>
+          <!--  -->
+            <mat-form-field>
+              <input formControlName="description" matInput placeholder="{{ 'description' | translate }}">
+              <mat-error *ngIf="schoolService.form.controls.description.hasError('required')">
+                {{ 'please' | translate }} {{ 'enter' | translate }} {{ 'a' | translate }} {{ 'description' | translate }}
+              </mat-error>
+            </mat-form-field>
+          <!--  -->
+            <mat-form-field>
+              <input formControlName="document" matInput placeholder="{{ 'rnc' | translate }}">
+              <mat-error *ngIf="schoolService.form.controls.document.hasError('required')">
+                {{ 'rnc' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+              </mat-error>
+            </mat-form-field>
+          <!--  -->
+          <mat-form-field>
+            <div>
+              <mat-toolbar>
+                <!-- Display files names -->
+                <input matInput readonly />
+                <!-- <input matInput [(ngModel)]="fileAttr" readonly name="name" /> -->
+          
+                <!-- Browse Button -->
+                <button mat-flat-button color="primary">
+                  Browse File
+                </button>
+              </mat-toolbar>
+          
+              <!-- Fetch selected filed on change -->
+              <input type="file" #fileInput id="uploadFile" (change)="schoolService.cargarImagen($event)" multiple="false" accept="image/*" />
+              <img [src]="schoolService.imgURL" height="200" *ngIf="schoolService.imgURL">
+            </div>
+          </mat-form-field>
+          
+            <!--  -->
+          <div class="button-row">
+            <button class="float-left" mat-raised-button color="primary" type="submit" >{{ 'save' | translate }}</button>
+            <button class="float-right" mat-raised-button color="warn" (click)="onClose()">{{ 'close' | translate }}</button>
+          </div>
+        </div>
+    </form>
+  </div>
+    

@@ -1,0 +1,9 @@
+.wrapper_custom {
+    position: relative;
+    top: 0;
+    height: 88vh; 
+}
+.icon_menu_small{
+    margin-right: 1vh;
+    margin-left: -2vh;
+}

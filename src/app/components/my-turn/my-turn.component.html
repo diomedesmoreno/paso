@@ -1,0 +1,131 @@
+<div class="wrapper_custom">
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                        <div class="card-header card-header-danger">
+                            <h4 class="text-center font-weight-light">Creación de turnos</h4>
+                        </div>
+                        <div class="card-body" >
+                            <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Fecha del turno</mat-label>
+                                    <!-- #docregion toggle -->
+                                        <input matInput [matDatepicker]="picker" formControlName="datetime">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    <!-- #enddocregion toggle -->
+                                    <mat-error *ngIf="form.controls.datetime.hasError('required')">
+                                        Fecha del turno <strong>{{ 'required' | translate }}</strong>
+                                    </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-12">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{ 'teacher' | translate }}</mat-label>
+                                        <mat-select formControlName="teacher">
+                                        <mat-option>select one option</mat-option>
+                                        <mat-option *ngFor="let item of genders" [value]="item.key">
+                                            {{item.name}}
+                                        </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="form.controls.teacher.hasError('required')">
+                                        {{ 'teacher' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                    
+                                </div>
+                                <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <button mat-raised-button type="submit" class="btn btn-primary pull-left" >{{ 'create_turn' | translate }}</button>
+                                    <!-- <button mat-raised-button type="submit" class="btn btn-primary pull-left" [disabled]="this.form.invalid">Sign up</button> -->
+                                    <!-- <a routerLink="/login" class="btn btn-danger pull-right" >{{ 'back' | translate }}</a> -->
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="text-center font-weight-light">{{ 'shitf_list' | translate }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                              <mat-form-field appearance="standard">
+                                  <mat-label>{{ 'filter' | translate }}</mat-label>
+                                  <input matInput (keyup)="applyFilter($event)" placeholder="{{ 'enter' | translate }} {{ 'any' | translate }} {{ 'name' | translate }}" #input>
+                              </mat-form-field>
+                                
+                              <table mat-table [dataSource]="dataSource" matSort>
+                            
+                                <!-- Position Column -->
+                                <ng-container matColumnDef="noTurn">
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'number_turn_day' | translate }} </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.noTurn}} </td>
+                                </ng-container>
+                            
+                                <!-- Datetime Column -->
+                                <ng-container matColumnDef="datetime">
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'datetime_turn' | translate }} </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.datetime}} </td>
+                                </ng-container>
+                            
+                                <!-- Teacher Column -->
+                                <ng-container matColumnDef="tteacher">
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'teacher' | translate }} </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.tteacher}} </td>
+                                </ng-container>
+                            
+                                <!-- Status Column -->
+                                <ng-container matColumnDef="status">
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'status_turn' | translate }} </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                                </ng-container>
+    
+                                <!-- Options Column -->
+                                <ng-container matColumnDef="options">
+                                  <th mat-header-cell *matHeaderCellDef > {{ 'options' | translate }} </th>
+                                  <td mat-cell *matCellDef="let element"> 
+                                    <a href="javascript:void(0)" (click)="editUser(element)">
+                                      <i class="far fa-edit"></i>
+    
+                                    </a>
+                                  </td>
+                                </ng-container>
+                            
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+                                <ng-container matColumnDef="loading">
+                                  <mat-footer-cell *matFooterCellDef colspan="6">
+                                    Loading data...
+                                  </mat-footer-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="noData">
+                                  <mat-footer-cell *matFooterCellDef colspan="6">
+                                    No data.
+                                  </mat-footer-cell>
+                                </ng-container>
+                              </table>
+                              <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>    

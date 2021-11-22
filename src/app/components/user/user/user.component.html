@@ -1,0 +1,70 @@
+
+  <!-- <mat-toolbar> -->
+    <div class="button-row">
+      <span class="title" >{{ usersService.form.controls['id'].value? "Editar" : "Crear" }}</span>
+      <button class="btn-dialog-close float-right" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+    </div>
+  <!-- </mat-toolbar> -->
+  <div class="mdc-form-field">
+    <form [formGroup]="usersService.form" class="normal-form" (submit)="onSubmit()">
+      <!-- <mat-grid-list cols="3" > -->
+        <!-- <mat-grid-tile> -->
+          <div class="controles-container">
+            <input type="hidden" formControlName="id">
+            <!--  -->
+            <!-- <mat-spinner></mat-spinner> -->
+
+            <!-- <div class="col-md-12"> -->
+              <mat-form-field>
+                <input formControlName="fullName" matInput placeholder="{{ 'full_name' | translate }}">
+                <mat-error *ngIf="usersService.form.controls.fullName.hasError('required')">
+                  {{ 'full_name' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+                </mat-error>
+              </mat-form-field>
+            <!-- </div> -->
+            <!--  -->
+            <!-- <div class="col-md-12"> -->
+              <mat-form-field>
+                <input formControlName="email" matInput placeholder="{{ 'email' | translate }}">
+                <mat-error *ngIf="usersService.form.controls.email.hasError('email') && !usersService.form.controls.email.hasError('required')">
+                  {{ 'please' | translate }} {{ 'enter' | translate }} {{ 'a' | translate }} {{ 'email' | translate }} {{ 'valid' | translate }}
+                </mat-error>
+                <mat-error *ngIf="usersService.form.controls.email.hasError('required')">
+                  {{ 'email' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+                </mat-error>
+              </mat-form-field>
+            <!-- </div> -->
+            <!--  -->
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'birthday' | translate }}</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="birthday">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="usersService.form.controls.birthday.hasError('required')">
+                {{ 'birthday' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+              </mat-error>
+            </mat-form-field>
+            <!--  -->
+            <!-- <mat-form-field appearance="fill">
+              <mat-label>{{ 'gender' | translate }}</mat-label>
+              <mat-select formControlName="gender">
+                <mat-option>select one option</mat-option>
+                <mat-option *ngFor="let item of genders" [value]="item.key">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="usersService.form.controls.gender.hasError('required')">
+                {{ 'gender' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+              </mat-error>
+            </mat-form-field> -->
+          <!--  -->
+            <div class="button-row">
+              <button class="float-left" mat-raised-button color="primary" type="submit" >{{ 'save' | translate }}</button>
+              <button class="float-right" mat-raised-button color="warn" (click)="onClose()">{{ 'close' | translate }}</button>
+            </div>
+          </div>
+        <!-- </mat-grid-tile> -->
+      <!-- </mat-grid-list> -->
+    </form>
+  </div>
+  

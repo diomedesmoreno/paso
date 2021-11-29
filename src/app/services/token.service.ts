@@ -36,13 +36,13 @@ export class TokenService {
     if (token) {
       const payload = this.payload(token);
       let sustituto = payload.iss.replaceAll('http','https');
-      console.log("Soy ",payload,this.iss);
       if (payload) {
-        // if (this.iss.login.indexOf('airpay-inf') != -1){
-          // return Object.values(this.iss).indexOf(sustituto) > -1 ? true : false;
-        // } else {
+        console.log("Soy ",payload,this.iss);
+        if (this.iss.login.indexOf('airpay-inf') != -1){
+          return Object.values(this.iss).indexOf(sustituto) > -1 ? true : false;
+        } else {
           return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
-        // }
+        }
       }
     }
     return false;

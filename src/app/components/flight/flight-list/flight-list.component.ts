@@ -111,17 +111,7 @@ export class FlightListComponent implements OnInit {
     afterCloseModal.afterClosed().subscribe(() => { 
       this.updateTable();
      } );
-     this.countryServices.get()
-    .subscribe(
-      data => {
-        // console.log("0",data['data']);
-        // this.paisOrigen = data['data'];
-        // this.handleResponse(data['data']);
-      },
-      error => {
-        console.log("Error: ",error);
-      }
-      );
+    
   }
 
 

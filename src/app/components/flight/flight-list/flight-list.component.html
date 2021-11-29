@@ -30,19 +30,19 @@
                             <!-- countryFrom Column -->
                             <ng-container matColumnDef="countryFrom">
                               <th mat-header-cell *matHeaderCellDef mat-sort-header> Pais de origen </th>
-                              <td mat-cell *matCellDef="let element"> {{element.countryFrom}} </td>
+                              <td mat-cell *matCellDef="let element"> {{element.country_from.name}} </td>
                             </ng-container>
                         
                             <!-- countryTo Column -->
                             <ng-container matColumnDef="countryTo">
                               <th mat-header-cell *matHeaderCellDef mat-sort-header> Pais de destino </th>
-                              <td mat-cell *matCellDef="let element"> {{element.countryTo}} </td>
+                              <td mat-cell *matCellDef="let element"> {{element.country_to.name}} </td>
                             </ng-container>
                         
                             <!-- timeDeparture Column -->
                             <ng-container matColumnDef="timeDeparture">
                               <th mat-header-cell *matHeaderCellDef mat-sort-header> Duración del vuelo </th>
-                              <td mat-cell *matCellDef="let element"> {{element.timeDeparture}} </td>
+                              <td mat-cell *matCellDef="let element"> {{element.hour}} </td>
                             </ng-container>
 
                             <!-- Options Column -->

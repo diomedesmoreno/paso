@@ -16,7 +16,12 @@ export class DetailService {
     countryFrom: new FormControl('', [Validators.required]),
     countryTo: new FormControl('', [Validators.required]),
     numberPassengers: new FormControl('', [Validators.required]),
+    passengers: new FormControl('', [Validators.required]),
     id: new FormControl('', []),
+    flight: new FormControl('', []),
+    arrivaltime: new FormControl('', []),
+    departuretime: new FormControl('', []),
+    hour: new FormControl('', []),
   });
   
   constructor(
@@ -37,15 +42,26 @@ export class DetailService {
       countryFrom:"",
       countryTo:"",
       numberPassengers:"",
+      hour:"",
+      departuretime:"",
+      arrivaltime:"",
+      flight:"",
+      passengers:"",
     });
   }
 
   edit(row): void {
+    console.log(row);
     this.form.setValue({
-      name: row.name,
-      countryFrom: row.countryFrom,
-      countryTo: row.countryTo,
-      numberPassengers: row.numberPassengers,
+      name: row.flight.name,
+      passengers: row.passenger.name +" "+row.passenger.lastname,
+      countryFrom: row.flight.country_from.name,
+      countryTo: row.flight.country_to.name,
+      numberPassengers: 0, // row.numberPassengers,
+      flight: row.flight.name,
+      arrivaltime: row.flight.arrivaltime,
+      departuretime: row.flight.departuretime,
+      hour: row.flight.hour,
       id: row.id
     });
   }
@@ -53,10 +69,15 @@ export class DetailService {
   initializeFormGroup(): void {
     this.form.setValue({
       id: null,
-      name: '',
-      countryFrom: '',
-      countryTo: '',
-      numberPassengers: '',
+      name:"",
+      countryFrom:"",
+      countryTo:"",
+      numberPassengers:"",
+      hour:"",
+      departuretime:"",
+      arrivaltime:"",
+      flight:"",
+      passengers:"",
     });
   }
 

@@ -12,11 +12,22 @@ export class TicketService {
   private headers: HttpHeaders; 
   
   public form: FormGroup = new FormGroup({
-    passenger: new FormControl('', [Validators.required]),
-    flight: new FormControl('', [Validators.required]),
-    countryTo: new FormControl('', [Validators.required]),
-    // lastname: new FormControl('', [Validators.required]),
+    passengers_id: new FormControl('', [Validators.required]),
+    flights_id: new FormControl('', [Validators.required]),
+    countries_id: new FormControl('', [Validators.required]),
+    salida: new FormControl('', [Validators.required]),
+    regreso: new FormControl('', [Validators.required]),
+    countries_to: new FormControl('', [Validators.required]),
+    countries_from: new FormControl('', [Validators.required]),
+    number_passengers: new FormControl('', [Validators.required]),
     id: new FormControl('', []),
+  });
+  public formP: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
+    birthday: new FormControl('', []),
+    lastname: new FormControl('', [Validators.required]),
+    flight_id: new FormControl('', []),
   });
   
   constructor(
@@ -33,31 +44,70 @@ export class TicketService {
   onClean(): void {
     this.form.setValue({
       id: null,
-      countryTo:"",
-      flight:"",
-      passenger:"",
-      // birthday:"",
-      // password:"",
+      countries_id:"",
+      flights_id:"",
+      passengers_id:"",
+      salida:"",
+      regreso:"",
+      countries_to:"",
+      countries_from:"",
+      number_passengers:"",
     });
   }
 
-  editPassenger(row): void {
+  editTicket(row): void {
     this.form.setValue({
-      countryTo: row.countryTo,
-      flight: row.flight,
-      passenger: row.passenger,
+      countries_id: row.countries_id,
+      flights_id: row.flights_id,
+      passengers_id: row.passengers_id,
       // lastname: row.lastname,
       id: row.id
     });
+  }
+  add(row): void {
+
+
+    // this.form.setValue({
+    //   countries_id: row.countries_id,
+    //   flights_id: row.flights_id,
+    //   passengers_id: row.passengers_id,
+    //   // lastname: row.lastname,
+    //   id: row.id
+    // });
   }
 
   initializeFormGroup(): void {
     this.form.setValue({
       id: null,
-      countryTo: '',
-      flight: '',
-      passenger: '',
-      // lastname: '',
+      countries_id: '',
+      flights_id: '',
+      passengers_id: '',
+      salida:"",
+      regreso:"",
+      countries_to:"",
+      countries_from:"",
+      number_passengers:"",
+    });
+  }
+
+  onCleanP(): void {
+    this.formP.setValue({
+      flight_id: null,
+      name:"",
+      email:"",
+      // gender:"",
+      birthday:"",
+      lastname:"",
+    });
+  }
+
+  initializeFormP(): void {
+    this.formP.setValue({
+      flight_id: null,
+      name: '',
+      email: '',
+      birthday: '',
+      lastname: '',
     });
   }
 
@@ -66,7 +116,15 @@ export class TicketService {
     // console.log(` SOy : ${this.baseUrl}/users`, request);
     return this.http.get(`${this.baseUrl}/tickets`, request);
   }
+  
 
+  insertR(request) {
+    console.log(`${this.baseUrl}/users`, request);
+    return this.http.post(`${this.baseUrl}/tickets-reservation`, request);
+    // signup(data) {
+      // return this.http.post(`${this.baseUrl}/signup`, request)
+    // }
+  }
   insert(request) {
     console.log(`${this.baseUrl}/users`, request);
     return this.http.post(`${this.baseUrl}/tickets`, request);

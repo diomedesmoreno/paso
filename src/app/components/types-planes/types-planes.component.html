@@ -1,0 +1,37 @@
+<!-- <mat-toolbar> -->
+    <div class="button-row">
+        <span class="title" >{{ typesPlanesService.form.controls['id'].value? "Editar" : "Crear" }}</span>
+        <button class="btn-dialog-close float-right" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+      </div>
+    <!-- </mat-toolbar> -->
+    <div class="mdc-form-field">
+      <form [formGroup]="typesPlanesService.form" class="normal-form" (submit)="onSubmit()">
+          <div class="controles-container">
+            <input type="hidden" formControlName="id">
+            <!--  -->
+              
+                <mat-form-field class="form__input">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="Nombre" type="text" formControlName="name">
+                </mat-form-field>
+
+
+                <mat-form-field class="form__input">
+                    <mat-label>Descripción</mat-label>
+                    <input matInput placeholder="Descripción" type="text" formControlName="description">
+                </mat-form-field>
+ 
+                <mat-form-field class="form__input">
+                    <mat-label>Tipo de Avion</mat-label>
+                    <input matInput placeholder="Tipo de Avion" type="text" formControlName="types_classes">
+                </mat-form-field>
+            
+              <!--  -->
+            <div class="button-row">
+              <button class="float-left" mat-raised-button color="primary" type="submit" >{{ 'save' | translate }}</button>
+              <button class="float-right" mat-raised-button color="warn" (click)="onClose()">{{ 'close' | translate }}</button>
+            </div>
+          </div>
+      </form>
+    </div>
+       

@@ -50,6 +50,7 @@ export class TokenService {
 
   payload(token) {
     const payload = token.split('.')[1];
+    console.log(payload);
     return this.decode(payload);
   }
 

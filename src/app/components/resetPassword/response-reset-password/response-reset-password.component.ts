@@ -33,7 +33,9 @@ export class ResponseResetPasswordComponent implements OnInit {
 
    onSubmit() {
     const change: any = {
-      newPassword: this.form.get('newPassword')?.value
+      newPassword: this.form.get('newPassword')?.value,
+      resetToken: "KJZra31XnAwTOdAubWU9PzaDdkSIYxiXbkGa2KjbPkmoFwZJRrOI8FS9cSR6"
+      // resetToken: "KJZra31XnAwTOdAubWU9PzaDdkSIYxiXbkGa2KjbPkmoFwZJRrOI8FS9cSR6"
     }
     this.loginService.changePasswordEx(change).subscribe(
       data => this.handleResponse(data),
@@ -50,10 +52,12 @@ export class ResponseResetPasswordComponent implements OnInit {
 
   handleError(error) {
     this.error = error.error.error;
-    if (this.error.length)
-      this.notification.getDisplayErrors(this.error);
-    else 
+    console.log(this.error,error.error,error);
+    // if (this.error.length)
+    //   this.notification.getDisplayErrors(this.error);
+    // else 
       this.notification.getDisplayNotification('Opss.. ocurrio un error con el servidor','danger');
+      this.notification.getDisplayNotification(error.error.message,'danger');
     console.log(this.error);
   }
 

@@ -1,0 +1,185 @@
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button> -->
+<mat-horizontal-stepper>
+  <mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="ticketService.form">
+      <form [formGroup]="ticketService.form">
+        <ng-template matStepLabel>Seleccione el destino</ng-template>
+        <!-- <div class="col-md-12"> -->
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field appearance="fill">
+              <mat-label>Pais de salida</mat-label>
+              <mat-select formControlName="countries_from">
+                  <mat-option *ngFor="let pais of paisOrigen" [value]="pais.id" >
+                  {{pais.name}}
+                  </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="fill">
+              <mat-label>Pais de destino</mat-label>
+              <mat-select formControlName="countries_to">
+                  <mat-option *ngFor="let pais of paisDestino" [value]="pais.id" >
+                  {{pais.name}}
+                  </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <!--  -->
+            <mat-form-field appearance="fill">
+              <mat-label>Salida</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="salida">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <!-- <mat-error *ngIf="ticketService.form.controls.birthday.hasError('required')">
+                {{ 'birthday' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+              </mat-error> -->
+            </mat-form-field>
+          <!--  -->
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="fill">
+              <mat-label>Regreso</mat-label>
+              <input matInput [matDatepicker]="picker2" formControlName="regreso">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+              <!-- <mat-error *ngIf="ticketService.form.controls.birthday.hasError('required')">
+                {{ 'birthday' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+              </mat-error> -->
+            </mat-form-field>
+          </div>
+      </div>
+        <div>
+          <button (click)="onSearch()" color="primary" mat-button matStepperNext>Próximo paso</button>
+        </div>
+      </form>
+    </mat-step>
+    <!-- #docregion label -->
+    <mat-step label="Buscar vuelo">
+    <!-- #enddocregion label -->
+      <!-- <form [formGroup]="secondFormGroup"> -->
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                required>
+        </mat-form-field> -->
+        <!-- Tabla -->
+       
+        <table mat-table [dataSource]="resultSearch" class="mat-elevation-z8 demo-table">
+          <!-- Position Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>Codigo del vuelo.</th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="flightDuration">
+            <th mat-header-cell *matHeaderCellDef>Duración del viaje</th>
+            <td mat-cell *matCellDef="let element">{{element.flightDuration}}</td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="departuretime">
+            <th mat-header-cell *matHeaderCellDef>Hora aproximada de salida</th>
+            <td mat-cell *matCellDef="let element">{{element.departuretime}}</td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="arrivaltime">
+            <th mat-header-cell *matHeaderCellDef>Hora Aproximada de llegada</th>
+            <td mat-cell *matCellDef="let element">{{element.arrivaltime}}</td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="add(row)"></tr>
+          <!-- <tr
+              mat-row
+              (click)="clickedRows.add(row)"
+              [class.demo-row-is-clicked]="clickedRows.has(row)"
+              *matRowDef="let row; columns: displayedColumns;"
+          ></tr> -->
+        </table>
+        
+        <!-- Tabla -->
+        <div>
+          <button mat-button matStepperPrevious>Regresar</button>
+          <button mat-button color="primary" matStepperNext>Próximo paso</button>
+        </div>
+      <!-- </form> -->
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Reservar Vuelo</ng-template>
+      <form [formGroup]="ticketService.formP" >
+        <div class="row">
+          <div class="col-md-6">
+              <mat-form-field>
+                <input formControlName="name" matInput placeholder="{{ 'name' | translate }}">
+                <mat-error *ngIf="ticketService.formP.controls.name.hasError('required')">
+                  {{ 'name' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+                </mat-error>
+              </mat-form-field>
+          </div>
+        <!-- </div>
+        <div class="row"> -->
+          <div class="col-md-6">
+            <mat-form-field>
+              <input formControlName="lastname" matInput placeholder="{{ 'lastname' | translate }}">
+              <mat-error *ngIf="ticketService.formP.controls.lastname.hasError('required')">
+                {{ 'lastname' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+              <mat-form-field>
+                <input formControlName="email" matInput placeholder="{{ 'email' | translate }}">
+                <mat-error *ngIf="ticketService.formP.controls.email.hasError('email') && !ticketService.form.controls.email.hasError('required')">
+                  {{ 'please' | translate }} {{ 'enter' | translate }} {{ 'a' | translate }} {{ 'email' | translate }} {{ 'valid' | translate }}
+                </mat-error>
+                <mat-error *ngIf="ticketService.formP.controls.email.hasError('required')">
+                  {{ 'email' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+                </mat-error>
+              </mat-form-field>
+          </div>
+        <!-- </div>
+        <div class="row"> -->
+          <div class="col-md-6">
+              <mat-form-field appearance="fill">
+                <mat-label>{{ 'birthday' | translate }}</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="birthday">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="ticketService.formP.controls.birthday.hasError('required')">
+                  {{ 'birthday' | translate }} {{ 'is' | translate }} <strong>{{ 'required' | translate }}</strong>
+                </mat-error>
+              </mat-form-field>
+          </div>
+        </div>
+      </form>
+      <div>
+        <button mat-button matStepperPrevious>Regresar</button>
+        <!-- <button mat-raised-button color="primary" type="submit" >Reservar</button> -->
+        <button mat-button color="primary" (click)="saveTicket()">Reservar</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+ 
+</mat-horizontal-stepper>
+
+
+<!-- Copyright 2021 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->

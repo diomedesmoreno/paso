@@ -19,7 +19,7 @@ export class FlightService {
     countryFrom: new FormControl('',[Validators.required]),
     countryTo: new FormControl('',[Validators.required]),
     hora: new FormControl('',[Validators.required]),
-    minuto: new FormControl('',[Validators.required]),
+    // minuto: new FormControl('',[Validators.required]),
     horaSalida: new FormControl('',[Validators.required]),
     horaLlegada: new FormControl('',[Validators.required]),
     id: new FormControl('',[]),
@@ -48,7 +48,7 @@ export class FlightService {
       countryFrom: "",
       countryTo: "",
       hora: "",
-      minuto: "",
+      // minuto: "",
       horaSalida: "",
       horaLlegada: "",
       id: null
@@ -60,14 +60,16 @@ export class FlightService {
   setForm(row): void{
     // let img = row.logo_url.length > 0? this.baseUrlImg + row.logo_url : null;
     this.form.setValue({
-      hora: row.hora,
-      minuto: row.minuto,
+      hora: row.hour,
+      // minuto: row.minute,
       countryFrom: row.countryFrom,
       countryTo: row.countryTo,
-      horaSalida: row.horaSalida,
-      horaLlegada: row.horaLlegada,
+      horaSalida: row.departuretime,
+      horaLlegada: row.arrivaltime,
       id: row.id
     });
+    console.log(this.form.value);
+
     // this.imgURL = img;
   }
 

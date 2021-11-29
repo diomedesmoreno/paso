@@ -34,14 +34,14 @@ export interface User {
 export class PassengerListComponent implements OnInit {
   private notification = new MessengerNotification();
   public error = [];
-  // private dataSource: any;
-  private dataSource: any = [
-    {'id':1,name: 'Juan',lastname: ' Alexander',email: 'alexander@example.com',birthday: '1990-01-01'},
-    {'id':2,name: 'Roberto',lastname: ' Morillo',email: 'Morillo@example.com',birthday: '1990-01-01'},
-    {'id':3,name: 'Teodoro',lastname: ' Montero',email: 'Montero@example.com',birthday: '1990-01-01'},
-    {'id':4,name: 'Javier',lastname: ' Moquete',email: 'Moquete@example.com',birthday: '1990-01-01'},
-    {'id':5,name: 'Rafael',lastname: ' Molina',email: 'Molina@example.com',birthday: '1990-01-01'},
-  ];
+  private dataSource: any;
+  // private dataSource: any = [
+  //   {'id':1,name: 'Juan',lastname: ' Alexander',email: 'alexander@example.com',birthday: '1990-01-01'},
+  //   {'id':2,name: 'Roberto',lastname: ' Morillo',email: 'Morillo@example.com',birthday: '1990-01-01'},
+  //   {'id':3,name: 'Teodoro',lastname: ' Montero',email: 'Montero@example.com',birthday: '1990-01-01'},
+  //   {'id':4,name: 'Javier',lastname: ' Moquete',email: 'Moquete@example.com',birthday: '1990-01-01'},
+  //   {'id':5,name: 'Rafael',lastname: ' Molina',email: 'Molina@example.com',birthday: '1990-01-01'},
+  // ];
   private displayedColumns: string[];
   public accion: string;
 

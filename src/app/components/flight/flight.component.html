@@ -12,38 +12,46 @@
               
             <mat-form-field appearance="fill">
                 <mat-label>Pais de origen</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let pais of paisOrigen" [value]="pais.value" formControlName="countryFrom">
+                <mat-select formControlName="countryFrom">
+                    <mat-option *ngFor="let pais of paisOrigen" [value]="pais.id" >
                     {{pais.name}}
                     </mat-option>
                 </mat-select>
-                </mat-form-field>
+              </mat-form-field>
 
-                <mat-form-field appearance="fill">
+              <mat-form-field appearance="fill">
                 <mat-label>Pais de destino</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let pais of paisDestino" [value]="pais.value" formControlName="countryTo">
+                <mat-select formControlName="countryTo">
+                    <mat-option *ngFor="let pais of paisDestino" [value]="pais.id" >
                     {{pais.name}}
+                    </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Avión</mat-label>
+                <mat-select formControlName="planes_id">
+                    <mat-option *ngFor="let avion of aviones" [value]="avion.id" >
+                    {{avion.name}}
                     </mat-option>
                 </mat-select>
                 </mat-form-field>
 
                 <mat-form-field class="form__input">
                 <mat-label>Hora de salida</mat-label>
-                <input matInput placeholder="Hora de salida" type="email" formControlName="horaSalida">
+                <input matInput placeholder="Hora de salida" type="text" formControlName="horaSalida">
                 </mat-form-field>
             
                 <mat-form-field class="form__input">
                 <mat-label>Hora de llegada</mat-label>
-                <input matInput placeholder="Contraseña" type="password" formControlName="horaLlegada">
+                <input matInput placeholder="Hora de llegada" type="text" formControlName="horaLlegada">
                 </mat-form-field>
 
                 <mat-form-field class="form__input">
-                <mat-label>Hora de llegada</mat-label>
-                <input matInput placeholder="0" type="number" formControlName="hora">
-                <input matInput placeholder="0" type="number" formControlName="minuto">
+                  <mat-label>Duración de viaje</mat-label>
+                  <input matInput placeholder="00:00" type="text" formControlName="hora">
                 </mat-form-field>
-            
+              
               <!--  -->
             <div class="button-row">
               <button class="float-left" mat-raised-button color="primary" type="submit" >{{ 'save' | translate }}</button>

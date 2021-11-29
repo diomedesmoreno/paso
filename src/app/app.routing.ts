@@ -8,6 +8,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { FlightReservationsComponent } from './components/flight-reservations/flight-reservations.component';
 import { BeforeLoginService } from './services/before-login.service';
 import { AfterLoginService } from './services/after-login.service';
 import { SendResetPasswordComponent } from './components/resetPassword/send-reset-password/send-reset-password.component';
@@ -28,6 +29,16 @@ const routes: Routes =[
   //   canActivate: [BeforeLoginService]
   // },
   
+  {
+    path: 'reservacion2',
+    component: FlightReservationsComponent,
+    canActivate: [AfterLoginService]
+  },
+  {
+    path: 'reservacion',
+    component: FlightReservationsComponent,
+    canActivate: [BeforeLoginService]
+  },
   {
     path: 'login',
     component: LoginComponent,

@@ -1,0 +1,40 @@
+<!-- <mat-toolbar> -->
+    <div class="button-row">
+        <span class="title" >{{ planesService.form.controls['id'].value? "Editar" : "Crear" }}</span>
+        <button class="btn-dialog-close float-right" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+      </div>
+    <!-- </mat-toolbar> -->
+    <div class="mdc-form-field">
+      <form [formGroup]="planesService.form" class="normal-form" (submit)="onSubmit()">
+          <div class="controles-container">
+            <input type="hidden" formControlName="id">
+            <!--  -->
+              
+                <mat-form-field appearance="fill">
+                    <mat-label>Tipo de avion</mat-label>
+                    <mat-select formControlName="types_planes_id">
+                        <mat-option *ngFor="let avion of tipoAvion" [value]="avion.id" >
+                        {{avion.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="form__input">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="Nombre" type="text" formControlName="name">
+                </mat-form-field>
+
+                <mat-form-field class="form__input">
+                    <mat-label>Cantidad de asientos</mat-label>
+                    <input matInput placeholder="Cantidad de asientos" type="number" formControlName="seating">
+                </mat-form-field>
+            
+              <!--  -->
+            <div class="button-row">
+              <button class="float-left" mat-raised-button color="primary" type="submit" >{{ 'save' | translate }}</button>
+              <button class="float-right" mat-raised-button color="warn" (click)="onClose()">{{ 'close' | translate }}</button>
+            </div>
+          </div>
+      </form>
+    </div>
+       

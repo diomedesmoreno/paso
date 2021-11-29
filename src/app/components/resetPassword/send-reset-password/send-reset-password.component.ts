@@ -49,9 +49,9 @@ export class SendResetPasswordComponent implements OnInit {
 
   handleError(error) {
     this.error = error.error.error;
-    if (this.error.length)
-      this.notification.getDisplayErrors(this.error);
-    else 
+    // if (this.error.length)
+    //   this.notification.getDisplayErrors(this.error);
+    // else 
       this.notification.getDisplayNotification('Opss.. ocurrio un error con el servidor','danger');
     console.log(this.error);
   }

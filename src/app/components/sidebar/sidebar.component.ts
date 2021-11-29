@@ -26,11 +26,26 @@ export const ROUTES: RouteInfo[] = [
     // { path: '/turn', title: 'Mis Turnos',  icon: 'home', class: '' }, 
     // { path: '/information', title: 'Información general',  icon: 'home', class: '' }, 
 
+    { path: '/aerolineas', title: 'Aerolinea',  icon: 'business', class: '' }, 
+    { path: '/aeropuerto', title: 'Aeropuerto',  icon: 'local_airport', class: '' }, 
+    { path: '/tipo-avion', title: 'Tipos de aviones',  icon: 'connecting_airports', class: '' }, 
+    { path: '/aviones', title: 'Aviones',  icon: 'flight', class: '' }, 
+
     { path: '/vuelos', title: 'Crear vuelo',  icon: 'airplanemode_active', class: '' }, 
-    { path: '/pasajeros', title: 'Crear pasajero',  icon: 'person', class: '' }, 
-    { path: '/ticket', title: 'Ticket',  icon: 'home', class: '' }, 
-    { path: '/details', title: 'Lista de los vuelos',  icon: 'library_books', class: '' }, 
+    { path: '/pasajeros', title: 'Crear pasajero',  icon: 'person', class: '' },
+    
+    { path: '/ticket', title: 'Ticket',  icon: 'airplane_ticket', class: '' }, 
+    { path: '/details', title: 'Lista de vuelos',  icon: 'library_books', class: '' }, 
+    { path: '/seat', title: 'Reservación de asientos',  icon: 'library_books', class: '' }, 
+
+    { path: '/reservacion2', title: 'reservacion2',  icon: 'airline_seat_recline_extra', class: '' }, 
+
+    // { path: '/ticket', title: 'Ticket',  icon: 'home', class: '' }, 
+    // { path: '/typesPlanes', title: 'Tipos de aviones',  icon: 'library_books', class: '' }, 
     // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
+//     <span class="material-icons-outlined">
+
+// </span>
 ];
 
 @Component({

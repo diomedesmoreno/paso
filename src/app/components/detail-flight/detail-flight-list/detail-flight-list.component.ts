@@ -16,17 +16,18 @@ interface FieldTable {
   id: number;
   name: string;
   countryFrom: string;
-  // countryTo: string;
+  destiny: string;
+  nameo: string;
   numberPassengers: string;
 }
 
-export interface User {
-  id: number;
-  name: string;
-  countryFrom: string;
-  // countryTo: string;
-  numberPassengers: string;
-}
+// export interface User {
+//   id: number;
+//   name: string;
+//   countryFrom: string;
+//   destiny: string;
+//   numberPassengers: string;
+// }
 
 @Component({
   selector: 'app-detail-flight-list',
@@ -41,11 +42,11 @@ export class DetailFlightListComponent implements OnInit {
   private displayedColumns: string[];
   public accion: string;
   private dataSource: any = [
-    {'id':1,name: 'Vuelo AIR RD-USA',countryFrom: ' Republica dominicana',numberPassengers: '2'},
-    {'id':2,name: 'Vuelo AIR USA-RD',countryFrom: ' Estados unidos',numberPassengers: '3'},
-    {'id':3,name: 'Vuelo AIR RD-UK',countryFrom: ' Republica dominicana',numberPassengers: '1'},
-    {'id':4,name: 'Vuelo AIR UK-RD',countryFrom: ' Reino unido',numberPassengers: '2'},
-    {'id':5,name: 'Vuelo AIR RD-ES',countryFrom: ' Republica dominicana',numberPassengers: '1'},
+    {'id':1, name: 'Vuelo AIR RD-USA',countryFrom: ' República dominicana - Estados unidos', destiny: 'República dominicana',numberPassengers: '2/200'},
+    // {'id':2,name: 'Vuelo AIR USA-RD',countryFrom: ' Estados unidos',numberPassengers: '3'},
+    // {'id':3,name: 'Vuelo AIR RD-UK',countryFrom: ' Republica dominicana',numberPassengers: '1'},
+    // {'id':4,name: 'Vuelo AIR UK-RD',countryFrom: ' Reino unido',numberPassengers: '2'},
+    // {'id':5,name: 'Vuelo AIR RD-ES',countryFrom: ' Republica dominicana',numberPassengers: '1'},
   ];
 
   constructor(
@@ -53,7 +54,7 @@ export class DetailFlightListComponent implements OnInit {
     private detailService: DetailService,
     private token: TokenService,
   ) { 
-    this.displayedColumns = ['id', 'name', 'countryFrom', 'numberPassengers', 'options'];
+    this.displayedColumns = ['id', 'name', 'countryFrom','destiny', 'numberPassengers', 'options'];
 
   }
 
@@ -87,10 +88,10 @@ export class DetailFlightListComponent implements OnInit {
   }
 
   handleResponse(data) {
-    console.log("me actualices despues de todo",data);
+    // console.log("me actualices despues de todo",data);
     // this.dataSource = new MatTableDataSource<FieldTable>(data);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
 
   handleError(errors) {

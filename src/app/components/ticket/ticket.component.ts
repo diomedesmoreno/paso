@@ -1,9 +1,13 @@
+import { CountryService } from './../../services/country/country.service';
 import { Component, OnInit } from '@angular/core';
 
 import { MatDialogRef } from '@angular/material/dialog';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 import { TicketService } from '../../services/ticket/ticket.service';
+import { FlightService } from '../../services/flight/flight.service';
+import { PassengerService } from '../../services/passenger/passenger.service';
+
 import { TokenService } from '../../services/token.service';
 import { MessengerNotification } from '../../messenger-notification';
 
@@ -18,17 +22,51 @@ export class TicketComponent implements OnInit {
   public error = [];
   public accion: string;
 
-  public pasajeros: any = [{value:1,name: 'Juan Alexander'}];
-  public paisDestino: any = [{value:1, name: 'Estados unidos'}];
-  public vuelo: any = [{value: 1, name: 'Vuelo AIR RD-USA'}];
+  public pasajeros: any = [];
+  public paisDestino: any = [];
+  public vuelos = [];
+  // public plans                    : Plan[] = [];
+  // 'Vuelo PAYAIR RD-USA'
+  public label_salida: string;
+  public label_llegada: string;
+  public label_vuelo: string;
   
   constructor(
     public ticketService: TicketService,
+    public flightService: FlightService,
+    public countryService: CountryService,
+    public passengerService: PassengerService,
     public token: TokenService,
     // public dialogRef: MatDialogRef<UserComponent>,
   ) { }
 
   ngOnInit(): void {
+    this.countryService.get()
+    .subscribe(
+      data => {
+        this.paisDestino = data['data'];
+      },
+      error => {
+        console.log("Error: ",error);
+      });
+
+    this.passengerService.get()
+    .subscribe(
+      data => {
+        this.pasajeros = data['data'];
+      },
+      error => {
+        console.log("Error: ",error);
+      });
+
+    this.flightService.get()
+    .subscribe(
+      data => {
+        this.vuelos = data['data'];
+      },
+      error => {
+        console.log("Error: ",error);
+      });
   }
 
   onClose(){
@@ -71,6 +109,17 @@ export class TicketComponent implements OnInit {
     else 
       this.notification.getDisplayNotification('Opss.. ocurrio un error con el servidor','danger');
     console.log(this.error);
+  }
+
+  onSelect(data,value){
+      data.forEach(element => {
+        if(element.id == value.value ){
+            this.label_salida = element.departuretime;
+            this.label_llegada = element.arrivaltime;
+            this.label_vuelo = element.hour;
+        }
+        
+      });
   }
 
 }

@@ -1,3 +1,4 @@
+import { AirportsListComponent } from './../../components/airports/airports-list/airports-list.component';
 import { PassengerListComponent } from './../../components/passenger-list/passenger-list.component';
 import { FlightListComponent } from './../../components/flight/flight-list/flight-list.component';
 import { DetailFlightListComponent } from './../../components/detail-flight/detail-flight-list/detail-flight-list.component';
@@ -28,6 +29,12 @@ import { AssessmentExamComponent } from 'app/components/assessment-exam/assessme
 import { MyPracticeComponent } from 'app/components/my-practice/my-practice.component';
 import { MyTurnComponent } from 'app/components/my-turn/my-turn.component';
 import { GeneralInformationComponent } from 'app/components/general-information/general-information.component';
+import { CompaniesListComponent } from 'app/components/companies-list/companies-list.component';
+import { TypesPlanesListComponent } from 'app/components/types-planes/types-planes-list/types-planes-list.component';
+import { PlanesListComponent } from 'app/components/planes/planes-list/planes-list.component';
+import { SeatChartComponent } from 'app/components/seat-chart/seat-chart.component';
+import { FlightReservationsComponent } from 'app/components/flight-reservations/flight-reservations.component';
+
 
 // import { SignupComponent } from '../../components/signup/signup.component';
 
@@ -38,13 +45,15 @@ export const AdminLayoutRoutes: Routes = [
     //   children: [ {
     //     path: 'dashboard',
     //     component: DashboardComponent
-    // }]}, {
+    // }]}, 
+    // {
     // path: '',
     // children: [ {
     //   path: 'userprofile',
     //   component: UserProfileComponent
     // }]
-    // }, {
+    // }, 
+    // {
     //   path: '',
     //   children: [ {
     //     path: 'icons',
@@ -98,5 +107,15 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'details',          component: DetailFlightListComponent },
     { path: 'ticket',          component: TicketComponent },
     { path: 'pasajeros',          component: PassengerListComponent },
+
+    { path: 'aerolineas',          component: CompaniesListComponent },
+    { path: 'tipo-avion',          component: TypesPlanesListComponent },
+    { path: 'aviones',          component: PlanesListComponent },
+    { path: 'aeropuerto',          component: AirportsListComponent },
+    { path: 'seat',          component: SeatChartComponent },
+
+    { path: 'reservacion2',          component: FlightReservationsComponent },
+
+
     
 ];

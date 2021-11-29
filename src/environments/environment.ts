@@ -5,8 +5,8 @@
 
 export const environment = {
   production: false,
-  base: 'https://airpay-inf.herokuapp.com/api/auth',
-  base_auth: 'https://airpay-inf.herokuapp.com/api',
+  base_auth: 'https://airpay-inf.herokuapp.com/api/auth',
+  base: 'https://airpay-inf.herokuapp.com/api',
   // base_auth: 'http://localhost:8000/api/auth',
   // base: 'http://localhost:8000/api',
   base_img: 'http://localhost:8000/img/',

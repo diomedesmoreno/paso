@@ -61,7 +61,8 @@ const routes: Routes =[
   },
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'aerolineas',
+    // redirectTo: 'dashboard',
     pathMatch: 'full',
     canActivate: [AfterLoginService]
   }, 

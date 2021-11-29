@@ -37,8 +37,8 @@ export class TokenService {
       const payload = this.payload(token);
       let sustituto = payload.iss.replaceAll('http','https');
       if (payload) {
-        // console.log("Soy ",this.iss.login);
-        if (this.iss.login.indexOf('sisaprama') != -1){
+        console.log("Soy ",this.iss.login);
+        if (this.iss.login.indexOf('airpay-inf') != -1){
           return Object.values(this.iss).indexOf(sustituto) > -1 ? true : false;
         } else {
           return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;

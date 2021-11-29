@@ -29,6 +29,12 @@ export class TicketService {
     lastname: new FormControl('', [Validators.required]),
     flight_id: new FormControl('', []),
   });
+  public formAs: FormGroup = new FormGroup({
+    column_row: new FormControl('', [Validators.required]),
+    number_row: new FormControl('', [Validators.required]),
+    seat_row: new FormControl('', []),
+    flight_id: new FormControl('', []),
+  });
   
   constructor(
     private http: HttpClient,
@@ -98,6 +104,23 @@ export class TicketService {
       // gender:"",
       birthday:"",
       lastname:"",
+    });
+  }
+
+  initializeFormAs(): void {
+    this.formP.setValue({
+      flight_id: null,
+      column_row: '',
+      number_row: '',
+      seat_row: '',
+    });
+  }
+  onCleanAs(): void {
+    this.formP.setValue({
+      flight_id: null,
+      column_row: '',
+      number_row: '',
+      seat_row: '',
     });
   }
 

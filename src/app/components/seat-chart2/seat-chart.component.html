@@ -1,0 +1,44 @@
+
+<form [formGroup]="ticketService.formAs" >
+<div class="row">
+  <div class="col-md-6">
+      <mat-form-field appearance="fill">
+        <mat-label>Pasajero</mat-label>
+        <mat-select formControlName="passengers_id">
+            <mat-option *ngFor="let pais of pasajeros" [value]="pais.id" >
+            {{pais.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <mat-form-field appearance="fill">
+      <mat-label>Pasajero</mat-label>
+      <mat-select formControlName="passengers_id">
+          <mat-option *ngFor="let pais of pasajeros" [value]="pais.id" >
+          {{pais.name}}
+          </mat-option>
+      </mat-select>
+  </mat-form-field>
+  </div>
+  <div class="col-md-6">
+    <mat-form-field appearance="fill">
+      <mat-label>Pasajero</mat-label>
+      <mat-select formControlName="passengers_id">
+          <mat-option *ngFor="let pais of pasajeros" [value]="pais.id" >
+          {{pais.name}}
+          </mat-option>
+      </mat-select>
+  </mat-form-field>
+  </div>
+</div>
+
+<div>
+<button mat-button matStepperPrevious>Regresar</button>
+<button mat-button color="primary" matStepperNext>Próximo paso</button>
+</div>
+</form>
+ 
+  

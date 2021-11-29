@@ -74,6 +74,7 @@ import { PlanesComponent } from './planes/planes.component';
 import { PlanesListComponent } from './planes/planes-list/planes-list.component';
 import { FlightReservationsComponent } from './flight-reservations/flight-reservations.component';
 import { SeatChartComponent } from './seat-chart/seat-chart.component';
+import { SeatChart2Component } from './seat-chart2/seat-chart.component';
 
 // 
 
@@ -250,7 +251,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
     PlanesComponent,
     PlanesListComponent,
     FlightReservationsComponent,
-    SeatChartComponent
+    SeatChartComponent,
+    SeatChart2Component
   ],
   exports: [
     FooterComponent,

@@ -37,7 +37,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/ticket', title: 'Ticket',  icon: 'airplane_ticket', class: '' }, 
     { path: '/details', title: 'Lista de vuelos',  icon: 'library_books', class: '' }, 
     { path: '/seat', title: 'Reservación de asientos',  icon: 'library_books', class: '' }, 
-
+    { path: '/seat-basico', title: 'Reservación de asientos basico',  icon: 'library_books', class: '' }, 
     { path: '/reservacion2', title: 'reservacion2',  icon: 'airline_seat_recline_extra', class: '' }, 
 
     // { path: '/ticket', title: 'Ticket',  icon: 'home', class: '' }, 

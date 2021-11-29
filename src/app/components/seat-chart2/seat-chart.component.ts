@@ -7,7 +7,7 @@ import { TicketService } from '../../services/ticket/ticket.service';
   templateUrl: './seat-chart.component.html',
   styleUrls: ['./seat-chart.component.css']
 })
-export class SeatChartComponent implements OnInit {
+export class SeatChart2Component implements OnInit {
 
   private seatConfig: any = null;
   private seatmap = [];

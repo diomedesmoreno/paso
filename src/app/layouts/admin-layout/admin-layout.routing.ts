@@ -33,6 +33,7 @@ import { CompaniesListComponent } from 'app/components/companies-list/companies-
 import { TypesPlanesListComponent } from 'app/components/types-planes/types-planes-list/types-planes-list.component';
 import { PlanesListComponent } from 'app/components/planes/planes-list/planes-list.component';
 import { SeatChartComponent } from 'app/components/seat-chart/seat-chart.component';
+import { SeatChart2Component } from 'app/components/seat-chart2/seat-chart.component';
 import { FlightReservationsComponent } from 'app/components/flight-reservations/flight-reservations.component';
 
 
@@ -113,6 +114,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'aviones',          component: PlanesListComponent },
     { path: 'aeropuerto',          component: AirportsListComponent },
     { path: 'seat',          component: SeatChartComponent },
+    { path: 'seat-basico',          component: SeatChart2Component },
 
     { path: 'reservacion2',          component: FlightReservationsComponent },
 
